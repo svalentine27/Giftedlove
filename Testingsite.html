@@ -1,0 +1,284 @@
+<DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CouplesFund - Dashboard</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <link rel="stylesheet" href="./Stylefortestingsite.css">
+    <script src="/functionfortestingsite.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-heart"></i> Gifted Love</h1>
+            <div class="user-info" id="userInfo">
+                <h3>Welcome back!</h3>
+                <p>Please create an account or log in to get started</p>
+            </div>
+        </div>
+        
+        <div class="nav-tabs">
+            <button class="tab-btn active" onclick="showTab('account')">
+                <i class="fas fa-user"></i> Account
+            </button>
+            <button class="tab-btn" onclick="showTab('events')">
+                <i class="fas fa-calendar"></i> Events
+            </button>
+            <button class="tab-btn" onclick="showTab('wedding')">
+                <i class="fas fa-rings-wedding"></i> Wedding Page
+            </button>
+            <button class="tab-btn" onclick="showTab('funding')">
+                <i class="fas fa-money-bill-wave"></i> Fund Goals
+            </button>
+            <button class="tab-btn" onclick="showTab('messages')">
+                <i class="fas fa-comments"></i> Messages
+            </button>
+            <button class="tab-btn" onclick="showTab('dashboard')">
+                <i class="fas fa-chart-bar"></i> Dashboard
+            </button>
+        </div>
+        
+        <!-- Account Tab -->
+        <div class="tab-content active" id="account">
+            <h2>Account Management</h2>
+            
+            <div class="two-column">
+                <div>
+                    <h3>Create Account</h3>
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" id="newUserName" placeholder="Enter full name">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="newUserEmail" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label>Partner's Name</label>
+                        <input type="text" id="partnerName" placeholder="Enter partner's name">
+                    </div>
+                    <div class="form-group">
+                        <label>Account Type</label>
+                        <select id="accountType">
+                            <option value="couple">Couple (Fundraising)</option>
+                            <option value="contributor">Contributor</option>
+                        </select>
+                    </div>
+                    <button class="btn" onclick="createAccount()">Create Account</button>
+                </div>
+                
+                <div>
+                    <h3>Login</h3>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="loginEmail" placeholder="Enter email">
+                    </div>
+                    <button class="btn" onclick="loginUser()">Login</button>
+                    
+                    <h4 style="margin-top: 30px;">Existing Users</h4>
+                    <div id="userList"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Events Tab -->
+        <div class="tab-content" id="events">
+            <h2>Event Management</h2>
+            
+            <div class="two-column">
+                <div>
+                    <h3>Create New Event</h3>
+                    <div class="form-group">
+                        <label>Event Type</label>
+                        <select id="eventType">
+                            <option value="wedding">Wedding</option>
+                            <option value="honeymoon">Honeymoon</option>
+                            <option value="home">Home Purchase</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Event Title</label>
+                        <input type="text" id="eventTitle" placeholder="Enter event title">
+                    </div>
+                    <div class="form-group">
+                        <label>Event Date</label>
+                        <input type="date" id="eventDate">
+                    </div>
+                    <div class="form-group">
+                        <label>Location</label>
+                        <input type="text" id="eventLocation" placeholder="Enter location">
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea id="eventDescription" rows="4" placeholder="Describe your event..."></textarea>
+                    </div>
+                    <button class="btn" onclick="createEvent()">Create Event</button>
+                </div>
+                
+                <div>
+                    <h3>Your Events</h3>
+                    <div id="eventsList"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Wedding Page Tab -->
+        <div class="tab-content" id="wedding">
+            <h2>Wedding Page & RSVP</h2>
+            
+            <div class="two-column">
+                <div>
+                    <h3>Send RSVP Invitation</h3>
+                    <div class="form-group">
+                        <label>Guest Name</label>
+                        <input type="text" id="guestName" placeholder="Enter guest name">
+                    </div>
+                    <div class="form-group">
+                        <label>Guest Email</label>
+                        <input type="email" id="guestEmail" placeholder="Enter guest email">
+                    </div>
+                    <div class="form-group">
+                        <label>Select Event</label>
+                        <select id="rsvpEventSelect"></select>
+                    </div>
+                    <button class="btn" onclick="sendRSVP()">Send RSVP Invitation</button>
+                    
+                    <h3 style="margin-top: 30px;">Respond to RSVP (Guest View)</h3>
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" id="respondentName" placeholder="Enter your name">
+                    </div>
+                    <div class="form-group">
+                        <label>Response</label>
+                        <select id="rsvpResponse">
+                            <option value="confirmed">Will Attend</option>
+                            <option value="declined">Cannot Attend</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Number of Guests</label>
+                        <input type="number" id="guestCount" min="1" max="10" value="1">
+                    </div>
+                    <button class="btn" onclick="respondRSVP()">Submit Response</button>
+                </div>
+                
+                <div>
+                    <h3>RSVP Responses</h3>
+                    <div id="rsvpList"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Funding Tab -->
+        <div class="tab-content" id="funding">
+            <h2>Fund Goals & Contributions</h2>
+            
+            <div class="two-column">
+                <div>
+                    <h3>Set Fund Goal</h3>
+                    <div class="form-group">
+                        <label>Select Event</label>
+                        <select id="fundEventSelect"></select>
+                    </div>
+                    <div class="form-group">
+                        <label>Fund Goal ($)</label>
+                        <input type="number" id="fundGoal" placeholder="Enter target amount">
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea id="fundDescription" rows="3" placeholder="What will the funds be used for?"></textarea>
+                    </div>
+                    <button class="btn" onclick="setFundGoal()">Set Goal</button>
+                    
+                    <h3 style="margin-top: 30px;">Make Contribution (Contributor View)</h3>
+                    <div class="form-group">
+                        <label>Contributor Name</label>
+                        <input type="text" id="contributorName" placeholder="Enter your name">
+                    </div>
+                    <div class="form-group">
+                        <label>Contribution Amount ($)</label>
+                        <input type="number" id="contributionAmount" placeholder="Enter amount">
+                    </div>
+                    <div class="form-group">
+                        <label>Message (Optional)</label>
+                        <textarea id="contributionMessage" rows="2" placeholder="Add a personal message..."></textarea>
+                    </div>
+                    <button class="btn" onclick="makeContribution()">Contribute</button>
+                </div>
+                
+                <div>
+                    <h3>Fund Goals Progress</h3>
+                    <div id="fundGoalsList"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Messages Tab -->
+        <div class="tab-content" id="messages">
+            <h2>Messages</h2>
+            
+            <div class="two-column">
+                <div>
+                    <h3>Send Message to Couple</h3>
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" id="messageSender" placeholder="Enter your name">
+                    </div>
+                    <div class="form-group">
+                        <label>Select Couple</label>
+                        <select id="messageRecipient"></select>
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea id="messageContent" rows="4" placeholder="Write your message..."></textarea>
+                    </div>
+                    <button class="btn" onclick="sendMessage()">Send Message</button>
+                    
+                    <h3 style="margin-top: 30px;">Reply to Messages (Couple View)</h3>
+                    <div class="form-group">
+                        <label>Reply</label>
+                        <textarea id="replyContent" rows="3" placeholder="Write your reply..."></textarea>
+                    </div>
+                    <button class="btn" onclick="replyMessage()">Send Reply</button>
+                </div>
+                
+                <div>
+                    <h3>Message Thread</h3>
+                    <div class="message-thread" id="messageThread"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Dashboard Tab -->
+        <div class="tab-content" id="dashboard">
+            <h2>Dashboard Overview</h2>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalEvents">0</div>
+                    <div>Total Events</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="totalRSVPs">0</div>
+                    <div>Total RSVPs</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="totalContributions">$0</div>
+                    <div>Total Raised</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="totalMessages">0</div>
+                    <div>Messages</div>
+                </div>
+            </div>
+            
+            <div id="dashboardContent">
+                <p>Create an account and add some events to see your dashboard statistics!</p>
+            </div>
+        </div>
+    </div>
+
+    
